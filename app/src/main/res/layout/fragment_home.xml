@@ -20,11 +20,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/listview_1"
-        android:layout_width="287dp"
-        android:layout_height="147dp"
-        tools:layout_editor_absoluteX="66dp"
-        tools:layout_editor_absoluteY="57dp" />
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>
