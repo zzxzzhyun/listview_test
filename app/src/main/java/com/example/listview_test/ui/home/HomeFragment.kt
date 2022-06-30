@@ -1,13 +1,17 @@
 package com.example.listview_test.ui.home
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.listview_test.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
 
@@ -16,12 +20,16 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private var listView: ListView? = null
+
+    var array = arrayOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
+
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -33,7 +41,9 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
         return root
+
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
