@@ -25,21 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        /*
-        val jsonString = assets.open("phoneNumber.json").reader().readText()
-        val jsonarray = JSONArray(jsonString)
-        for (i in 0 until jsonarray.length()){
-            val person = jsonarray.getJSONObject(i)
-            array = array.plus(person.getString("Display Name"))
-        }
 
-
-        val adapter = ArrayAdapter(this,
-            R.layout.listview_item, array)
-
-        val listView:ListView = findViewById(R.id.listview_1)
-        listView.setAdapter(adapter)
-*/
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)

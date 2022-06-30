@@ -1,18 +1,18 @@
 package com.example.listview_test.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.listview_test.MainActivity
 import com.example.listview_test.R
 import com.example.listview_test.databinding.FragmentDashboardBinding
+import com.example.listview_test.PhoneNumberActivity
 import org.json.JSONArray
 
 class DashboardFragment : Fragment() {
@@ -35,10 +35,6 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         val jsonString = activity?.assets?.open("phoneNumber.json")?.reader()?.readText()
         val jsonarray = JSONArray(jsonString)
         for (i in 0 until jsonarray.length()){
@@ -52,8 +48,17 @@ class DashboardFragment : Fragment() {
         val listView: ListView = root.findViewById(R.id.list_item)
         listView.adapter = adapter
 
+
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(context, PhoneNumberActivity::class.java).apply{
+                putExtra("id",id.toInt())
+            }
+            startActivity(intent)
+        }
+
         return root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
